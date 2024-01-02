@@ -62,6 +62,10 @@ body {
     font-size: var(--font-xl);
 }
 
+#current-forecast .description {
+    text-transform: capitalize;
+}
+
 #current-forecast .description,
 #current-forecast .minmax {
     font-size: var(--font-regular);
