@@ -44,11 +44,21 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "current current"
+    grid-template-areas:
+        "search search"
+        "current current"
         "hourly hourly"
         "fiveday fiveday"
         "feelslike humidity";
     gap: var(--spacing-regular);
+}
+
+#search {
+    grid-area: search;
+    font-size: var(--font-regular);
+    border-radius: var(--font-regular);
+    padding: var(--spacing-medium);
+
 }
 
 /* styles related to current weather data*/
@@ -73,19 +83,91 @@ body {
 }
 
 
+/*styles related to hourly forecast */
 
 #hourly-forecast {
     grid-area: hourly;
+    text-align: center;
+
 }
+
+#hourly-forecast .hourly-container::-webkit-scrollbar {
+    display: none;
+}
+
+#hourly-forecast .hourly-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(100px, 1fr);
+    overflow-x: auto;
+    gap: var(--spacing-medium);
+
+
+}
+
+
+
+#hourly-forecast .hourly-container .icon {
+    height: 100px;
+    width: 100PX;
+    object-fit: contain;
+}
+
+#hourly-forecast .hourly-container .hourly-temp {
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+}
+
+/*styles related to five-day forecast */
 
 #five-day-forecast {
     grid-area: fiveday;
+    text-align: center;
+}
+
+#five-day-forecast .five-day-forecast-container {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.five-day-forecast-container .day-wise-forecast {
+    display: grid;
+    grid-template: auto/ repeat(4, 1fr);
+    gap: var(--spacing-regular);
+    place-items: center;
+}
+
+.five-day-forecast-container .day-wise-forecast .min-temp,
+.five-day-forecast-container .day-wise-forecast .min-temp {
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+
+}
+
+.five-day-forecast-container .day-wise-forecast .min-temp {
+    opacity: 50%;
+}
+
+.five-day-forecast-container .day-wise-forecast .max-temp {
+    justify-self: end;
+}
+
+.five-day-forecast-container .day-wise-forecast .icon {
+    width: 60px;
+    height: 60px;
+}
+
+.five-day-forecast-container .day-wise-forecast .day {
+    text-transform: capitalize;
 }
 
 #feels-like {
     grid-area: feelslike;
+    text-align: center;
 }
 
 #humidity {
     grid-area: humidity;
+    text-align: center;
 }
